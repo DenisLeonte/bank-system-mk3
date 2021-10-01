@@ -7,22 +7,22 @@ class user:
     __password = ""
     __encrypted_password = ""
 
-    def __set_name(self, name):
+    def set_name(self, name):
         self.__name = name
 
-    def __set_id(self,id):
+    def set_id(self,id):
         self.__id = id
 
-    def __get_id(self):
+    def get_id(self):
         return self.__id
 
-    def __get_name(self):
+    def get_name(self):
         return self.__name
 
     def set_password(self, password):
         self.__password = password
 
-    def __encrypt_password(self):
+    def encrypt_password(self):
         try:
             sha = sha256(self.__password.encode())
             self.__encrypted_password = sha.hexdigest()
@@ -31,5 +31,10 @@ class user:
             print("Fatal error. Failed to encrypt the password. Further operations impossible")
             return False
 
-    def __get_encrypted_password(self):
+    def get_encrypted_password(self):
         return self.__encrypted_password
+
+    def create_from_row(self,row):
+        self.__id = row[0]
+        self.__name = row[1]
+        self.__encrypted_password = row[2]
