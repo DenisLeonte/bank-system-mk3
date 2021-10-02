@@ -62,7 +62,7 @@ class user_file:
         with open(self.__path, 'a') as f:
             f.write(tx)
 
-    def find_user(self, name):
+    def get_user(self, name):
         User = user()
         with open(self.__path, "r") as csv_file:
             reader = csv.reader(csv_file, delimiter=",")
